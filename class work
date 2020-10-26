@@ -1,0 +1,143 @@
+#include<iostream>
+#pragma warning(disable: 4996)
+#include<stdlib.h>
+using namespace std;
+
+
+
+int main() {
+	int n, i;
+	int max;
+
+
+	cin >> n;
+	int* ptr;
+	ptr = new int[n];
+	if (ptr == NULL) {
+
+		cout << "out of memory";
+		return -1;
+	}
+
+	for (i = 0; i < n; i++) {
+		cin >> *(ptr + i);
+	}
+	max = *(ptr);
+	for (i = 0; i < n; i++) {
+		if (*(ptr + i) >= max) {
+			max = *(ptr + i);
+		}
+	}
+	cout << max;
+
+}
+Class work 2
+
+#include<iostream>
+#pragma warning(disable: 4996)
+#include<stdlib.h>
+using namespace std;
+
+
+
+int main() {
+	int n, i;
+	int max;
+	int sum = 0;
+	int GPA;
+
+	cout << " ENTER ARRAY SIZE : ";
+	cin >> n;
+	int* ptr;
+	ptr = new int[n];
+	if (ptr == NULL) {
+
+		cout << "out of memory";
+		return -1;
+	}
+	for (i = 0; i < n; i++) {
+		cout << "EACH SUBJECT'S GPA : ";
+		cin >> *(ptr + i);
+		sum += *(ptr + i);
+	}
+	GPA = sum / n;
+	if (GPA > 4) {
+		cout << "AWESOME";
+	}
+	else if (GPA >= 3 && GPA < 4) {
+		cout << "GOOD";
+	}
+	else {
+		cout << "TRY AGAIN";
+	}
+	delete[]ptr;
+}
+
+Class work 3
+
+#include<iostream>
+#pragma warning(disable: 4996)
+#include<stdlib.h>
+using namespace std;
+
+class stu {
+	char name[30];
+public:
+	void display() {
+		cin >> name;
+	}
+
+};
+
+
+
+
+int main() {
+	int n, i;
+	int max;
+	int sum = 0;
+	
+
+	cout << " ENTER ARRAY SIZE : ";
+	cin >> n;
+	stu * ptr;
+	ptr = new stu[n];
+	if (ptr == NULL) {
+
+		cout << "out of memory";
+		return -1;
+	}
+	for (i = 0; i < n; i++) {
+		cout << "ENTER NAME OF PERSON : ";
+		ptr[i].display();
+	}
+	delete[]ptr;
+}
+Class work 4
+
+#include<iostream>
+using namespace std;
+#pragma warning(disable: 4996)
+#include<fstream>
+#include<stdlib.h>
+#include<string>
+
+int main() {
+	ofstream fout("original.txt");
+	ifstream fin("original.txt");
+	fout << "I am very happy" << endl << " How are u?" << endl << "Have a nice time";
+	fout.close();
+
+	fout.open("record.txt");
+	char ch;
+	while (fin) {
+		fin >> ch;
+		fout << ch;
+
+	}
+	fin.close();
+	fout.close();
+
+
+
+}
