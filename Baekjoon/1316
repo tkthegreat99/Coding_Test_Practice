@@ -1,0 +1,49 @@
+#include<iostream>
+#include<algorithm>
+#include<string>
+#include<functional>
+using namespace std;
+
+
+//n이 n-1과 같지 않으며
+//n번째 문자에 해당하는 배열값이 true라면.
+
+
+
+
+int main() {
+	
+	int n;
+	cin >> n;
+	int cnt = 0;
+	int tmp = n;
+	
+
+	string str;
+	while (n > 0) {
+		
+		cin >> str;
+		bool alpha[26] = { false, };   // alpha 배열을 false로 모두 초기화 해놓은 다음에 
+		for (int i = 0; i < str.length()-1; i++) {
+			 //A = alpha[0]이, B는 alpha[1].... 이런 식으로 
+			alpha[str.at(i) - 97] = true;  // 해당 문자열에서 해당 알파벳은 알파 배열에서 true로 바꿔놓음
+
+			if (str.at(i) == str.at(i + 1)) continue; //전 꺼랑 같으면 문제 없으니까 패스하고 
+			else { //다른데 만약에 해당 알파배열이 true? 그럼 이건 그룹 단어 개수가 아니다.
+				if (alpha[str.at(i + 1) - 97] == true) { 
+					cnt++; 
+					break;
+				}
+				
+			}
+		}
+		n--;
+	}
+
+	
+	
+	cout << tmp - cnt;
+	
+}
+
+
