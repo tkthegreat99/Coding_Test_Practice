@@ -1,0 +1,46 @@
+#include<iostream>
+#include<algorithm>
+#include<string>
+#include<functional>
+using namespace std;
+
+
+
+
+
+
+int main() {
+	
+	int arr[9][9];
+	int big = 0;
+	int bigi; //최대 행
+	int bigj; //최대 열
+
+
+
+	int n, m;
+	for (int i = 0; i < 9; i++) {
+		for (int j = 0; j < 9; j++) {
+			cin >> arr[i][j];
+		}
+	}
+	
+	
+	for (int i = 0; i < 9; i++) {
+		for (int j = 0; j < 9; j++) {
+			if (arr[i][j] >= big) {
+				big = arr[i][j];
+				bigi = i;
+				bigj = j;
+			}
+		}
+	}
+	
+	
+	cout << big << endl;
+	cout << bigi + 1 << " " << bigj + 1;
+	
+	return 0;
+}
+
+
