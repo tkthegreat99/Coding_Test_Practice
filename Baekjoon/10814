@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<pair<int, pair<int, string>>> members;
+    for (int i = 0; i < n; i++) {
+        int age;
+        string name;
+        cin >> age >> name;
+        members.push_back({ age, { i, name } }); // 입력된 순서를 기억하기 위해 i도 저장
+    }
+
+
+
+    sort(members.begin(), members.end(), [](const pair<int, pair<int, string>>& a, const pair<int, pair<int, string>>& b) {
+        if (a.first == b.first) { // 나이가 같은 경우
+            return a.second.first < b.second.first; // 입력된 순서로 정렬
+        }
+        else { // 나이가 다른 경우
+            return a.first < b.first; // 나이를 우선순위로 정렬
+        }
+    });
+
+    for (auto member : members) {
+        cout << member.first << " " << member.second.second << "\n";
+    }
+
+    return 0;
+}
