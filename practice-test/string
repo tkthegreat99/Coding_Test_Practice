@@ -1,0 +1,49 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+
+
+using namespace std;
+
+
+int main() {
+	
+	string a = "love is";
+	a += " pain!";
+	a.pop_back();
+
+	cout << a << " : " << a.size() << '\n';
+	cout << char(*a.begin()) << '\n';
+	cout << char(*(a.end() - 1)) << '\n';
+
+	a.insert(0, "test ");
+	cout << a << " : " << a.size() << '\n';
+
+	a.erase(0, 5);
+	cout << a << " : " << a.size() << '\n';
+
+	auto it = a.find("love");
+	if (it != string::npos) cout << "있습니다." << '\n';
+
+	cout << string::npos << '\n';
+	cout << a.substr(5, 2) << '\n';
+
+
+}
+
+/*
++= 문자열에서 문자열을 더할 때 보통 += 를 써서 문자열 또는 문자를 더한다. push_back()라는 메서드가 있지만 이는 문자 밖에 더하지 못한다.
+begin() 문자열의 첫번째 요소를 가리키는 이터레이터를 반환
+end() 문자열의 마지막 요소 그 다음을 가리키는 이터레이터를 반환 
+이 둘은 vector, array, 연결리스트, 맵, set 에서도 존재
+size() 문자열의 사이즈를 반환 O(1)의 시간 복잡도
+insert(위치, 문자열) 특정 위치에 문자열 삽입 O(n)
+erase(위치, 크기) 특정 위치에 크기만큼 문자열 지우기
+pop_back() 문자열 끝 지우기.
+find(문자열) 특정 문자열을 찾아 위치 반환. 해당 문자열을 못 찾을 경우 string::npos를 반환
+string::npos 는 size_t 타입의 최대값을 의미. 
+substr(위치, 크기) 특정 위치에서 크기만큼의 문자열을 추출
+reverse() 문자열 string은 지원하진 않지만, algorithm 사용하면 할 수 있음. reverse(a.begin(), a.end()); 과 같이 사용하면 됨.
+
+*/
