@@ -1,0 +1,34 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <string>
+
+
+using namespace std;
+
+vector<string> split(string input, string buffer) {
+	vector<string> ret;
+	long long pos = 0;
+	string token = "";
+	while ((pos = input.find(buffer)) != string::npos) {
+		token = input.substr(0, pos);
+		ret.push_back(token);
+		input.erase(0, pos + buffer.size());
+	}
+	ret.push_back(input);	
+	return ret;
+}
+
+
+int main() {
+	
+	string s = "hello wow hi dj k";
+	string d = " ";
+	vector<string> a = split(s, d);
+	for (string b : a) cout << b << '\n';
+
+	
+
+	
+
+}
