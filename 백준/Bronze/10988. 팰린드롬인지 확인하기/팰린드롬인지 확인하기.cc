@@ -1,45 +1,26 @@
 #include <iostream>
-#include <algorithm>
-#include <stack>
-#include <string>
 #include <vector>
+#include <algorithm>
+#include <string>
 
 using namespace std;
 
 
+int alpha[26];
 
-int check(string str) {
 
-	string cop = "";
-	cop += str;
-
-	
-	reverse(str.begin(), str.end());
-	
-	int chk = 1;
-
-	for (int i = 0; i < str.length(); i++) {
-		if (str[i] != cop[i]) chk = 0;
-	}
-	if (chk == 0) {
-		return 0;
-	}
-
-	else return 1;
-}
-
+string s;
 
 int main() {
-	ios::sync_with_stdio(0);
+	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
+	string tmp;
 
-	string str;
-	getline(cin, str);
+	cin >> s;
 
-	cout << check(str) << '\n';
-
-
-
-
+	tmp = s;
+	reverse(s.begin(), s.end());
+	if (tmp == s) cout << 1;
+	else cout << 0;
 
 }
