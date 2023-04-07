@@ -24,21 +24,38 @@ int main() {
 	cin >> s;
 	int chk1 = 0;
 	int chk2 = 0;
+	int po1 = 0;
+	int po2 = 0;
+
+	int turn1;
+	int turn2;
 
 
-	for (auto i : s) {
-		if (i == s1[chk1]) {
+	for (int i = 0; i < s.length(); i++) {
+		if (s[i] == s1[chk1]) {
 			chk1++;
-			if (chk1 == 6) { cout << "YONSEI" << '\n'; return 0; }
+			if (chk1 == 6) { po1 = 1; turn1 = i;}
 		}
-		else if (i == s2[chk2]) {
+		if (s[i] == s2[chk2]) {
 			chk2++;
-			if (chk2 == 5) { cout << "KOREA" << '\n'; return 0; }
+			if (chk2 == 5) { po2 = 1; turn2 = i; }
 		}
 
 
 	}
 	
+	if (po1 && po2) {
+		if (turn1 > turn2) {
+			cout << "KOREA" << '\n';
+		}
+		else cout << "YONSEI" << '\n';
+
+	}
+	else {
+		if (po1 == 1) cout << "YONSEI" << '\n';
+		else cout << "KOREA" << '\n';
+	}
+
 	
 	return 0;
 
