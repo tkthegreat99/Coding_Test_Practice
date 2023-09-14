@@ -52,7 +52,6 @@ void solve()
         }
         if (sum >= m) {
             l = mid + 1;
-            tmp = max(mid, tmp);
             mid = (r + l) / 2;
         }
         else{
@@ -60,7 +59,7 @@ void solve()
             mid = (r + l) / 2;
         }
     }
-    cout << tmp << '\n';
+    cout << mid << '\n';
 }
 
 int cal(int a, int b)
