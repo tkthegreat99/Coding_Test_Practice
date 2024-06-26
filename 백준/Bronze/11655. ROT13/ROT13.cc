@@ -1,34 +1,35 @@
 #include <iostream>
+#define fastio cout.tie(0), cin.tie(0), ios_base::sync_with_stdio(0)
 #include <vector>
 #include <algorithm>
 #include <string>
-#include <queue>
+#include <map>
 
 using namespace std;
 
+
+
+
+
 int main() {
-
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr); cout.tie(nullptr);
-
+	fastio;
+	//65 , 97
 	string str;
+
 	getline(cin, str);
+	for (char s : str) {
 
-	for (int i = 0; i < str.size(); i++) {
-
-		if (str[i] >= 65 && str[i] < 97) {
-			if (str[i] + 13 > 90) str[i] -= 13;
-			else str[i] += 13;
+		if (isalpha(s)) {
+			if (s < 'a') {
+				s = 'A' + (s - 'A' + 13) % 26;
+				cout << s;
+			}
+			else {
+				s = 'a' + (s - 'a' + 13) % 26;
+				cout << s;
+			}
 		}
-		else if (str[i] >= 97 && str[i] <= 122) {
-			if (str[i] + 13 > 122) str[i] -= 13;
-			else str[i] += 13;
-		}
-		
-
+		else cout << s;
 	}
-	cout << str;
+
 }
-
-	
-
