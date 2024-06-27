@@ -1,38 +1,34 @@
-	#include <iostream>
-	#include <vector>
-	#include <algorithm>
-	#include <string>
-	#include <queue>
+#include <iostream>
+#define fastio cout.tie(0), cin.tie(0), ios_base::sync_with_stdio(0)
+#include <vector>
+#include <algorithm>
+#include <string>
+#include <map>
 
-	using namespace std;
+using namespace std;
 
+int psum[100001];
+int ret = -100004;
+int n, k, tmp;
 
-	int psum[100001];
-
-
-	int main() {
-
-		ios::sync_with_stdio(false);
-		cin.tie(nullptr); cout.tie(nullptr);
-
-		int n;
-		int k;	
-		cin >> n >> k;
-		int tmp;
-
-		
-		for (int i = 1; i <= n; i++) {
-			cin >> tmp;
-			psum[i] = psum[i - 1] + tmp; // 구간합
-		}
-		int ret = -999999;
-		for (int i = k; i <= n; i++) {
-			ret = max(ret, psum[i] - psum[i - k]);
-		}
-		cout << ret << '\n';
+int main() {
+	fastio;
 	
-		return 0;
+	cin >> n >> k;
+
+	for (int i = 1; i <= n; i++) {
+
+		cin >> tmp;
+
+		psum[i] = psum[i - 1] + tmp;
 	}
 
-	
+	for (int i = k; i <= n; i++) {
 
+		ret = max(ret, psum[i] - psum[i - k]);
+	}
+
+	cout << ret << '\n';
+
+	return 0;
+}
