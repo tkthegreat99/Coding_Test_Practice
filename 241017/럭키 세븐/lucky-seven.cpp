@@ -7,12 +7,12 @@ int main() {
     
     int n;
     int tmp;
-    cin >> n;
+    scanf("%d", &n);
 
     int cnt = 0, ret = 0;
     for(int i = 0 ; i < n; i++)
     {
-        cin >> tmp;
+        scanf("%d", &tmp);
         if(tmp % 7 == 0) 
         {
             cnt++;
@@ -23,7 +23,7 @@ int main() {
     float average = float(ret) / float(cnt);
     average = round(average * 10) / 10;
 
-    cout << cnt << " "<< ret << " "<< average;
+    printf("%d %d %.1f", cnt, ret, average);
 
 
     return 0;
