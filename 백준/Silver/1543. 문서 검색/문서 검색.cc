@@ -41,8 +41,8 @@ signed main()
     int k;
     while (( k = str.find(target)) != string::npos)
     {
-        //str.erase(k, k + len);
-        str = str.substr(k + len);
+        str.erase(0, k + len);
+        //str = str.substr(k + len);
         answer++;
         
     }
