@@ -21,22 +21,26 @@
 
 using namespace std;
 
-int check[10001];
 int v, e;
-int from, to, weight;
+int check[10001];
+
+
 
 signed main()
 {
     fastio;
+    
     cin >> v >> e;
-    vector<vector<pair<int, int>>> graph(v + 1, vector<pair<int, int>>(0, {0, 0}));
+    vector<vector<pair<int, int>>> graph(v + 1, vector<pair<int, int>>(0, { 0, 0 }));
 
     for (int i = 0; i < e; i++)
     {
-        cin >> from >> to >> weight;
-        graph[from].push_back({ weight, to });
-        graph[to].push_back({ weight, from });
+        int from, to, len;
+        cin >> from >> to >> len;
+        graph[from].push_back({ len, to });
+        graph[to].push_back({ len, from });
     }
+
 
     int cnt = 0;
     int tot = 0;
@@ -45,43 +49,31 @@ signed main()
 
     for (pair<int, int> k : graph[1])
     {
-        pq.push(k);
+        pq.push({ k.first, k.second });
     }
-
-    
 
     while (cnt < v - 1)
     {
-        int next = pq.top().second;
-        int curWeight = pq.top().first; pq.pop();
+        int cur = pq.top().second;
+        int weight = pq.top().first;
+        pq.pop();
+        
+        if (check[cur]) continue;
+        check[cur] = 1;
+        tot += weight;
+        cnt++;
 
-        //cout << next << " " << curWeight << '\n';
+        for (pair<int, int> k : graph[cur])
+        {
+            if (!check[k.second]) pq.push({ k.first, k.second });
+        }
 
-        if (!check[next])
-        {
-            tot += curWeight;
-            cnt++;
-            check[next] = 1;
-          //  cout << "cnt :  " << cnt << '\n';
-        }
-        else continue;
-        for (pair<int, int> k : graph[next])
-        {
-            if(!check[k.second]) pq.push(k);
-        }
     }
-    
+
     cout << tot << '\n';
     
-    
+
 }
 
 
-/*
-프림 알고리즘
 
-첫 번째 노드를 아무거나 고르고, 해당 노드에 연결된 것들을 최소 힙에 넣어놓고 중 최소 인것을 선택한다.
-
-
-
-*/
