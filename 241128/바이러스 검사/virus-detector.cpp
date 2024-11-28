@@ -18,9 +18,9 @@ int main() {
 
     for(long long i = 0; i < n ; i++)
     {
+        cnt++;
         if(rest[i] <= manager) // 팀장 선에서 컷 할수 있는 경우
         {
-            cnt++;
             continue;
         }
         else // 만약에 팀장 선에서 해결 불가
